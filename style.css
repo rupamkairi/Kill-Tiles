@@ -1,0 +1,12 @@
+html,
+body {
+  margin: 0px;
+  border: 0px;
+  padding: 0px;
+  background-color: rgb(150, 170, 225);
+  font-family: "Consolas", monospace;
+}
+
+.container {
+  padding: 10%;
+}
