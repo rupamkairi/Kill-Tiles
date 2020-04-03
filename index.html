@@ -13,25 +13,18 @@
  -->
     <title>Kill Tiles</title>
 
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="card.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/card.css" />
 
     <!-- <script defer src="phaser.min.js"></script> -->
   </head>
   <body>
     <div class="container">
-      <div class="card" id="c">
-        <div class="card-content" id="cc">
-          <div class="card-front">
-            <h1>🎆</h1>
-          </div>
-          <div class="card-back">
-            <h1>🍕</h1>
-          </div>
-        </div>
-      </div>
+      <div id="game-table"></div>
     </div>
   </body>
+  <script defer src="scripts/emoji_pool.js"></script>
   <script defer src="scripts/card.js"></script>
+  <script defer src="scripts/scene.js"></script>
   <script defer src="scripts/game.js"></script>
 </html>
