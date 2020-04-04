@@ -5,12 +5,12 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui"
     />
-    <!-- 
+
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="HandheldFriendly" content="true" />
     <meta name="mobile-web-app-capable" content="yes" />
- -->
+
     <title>Kill Tiles</title>
 
     <link rel="stylesheet" href="styles/style.css" />
@@ -20,7 +20,15 @@
   </head>
   <body>
     <div class="container">
+      <div id="scores">
+        <h2>Score:</h2>
+        <h2 id="score-text">0</h2>
+      </div>
+
       <div id="game-table"></div>
+
+      <h4>*please refresh the page if no cards appeared in the page 🙏.</h4>
+      <h4>**refresh the page to play again 🧩.</h4>
     </div>
   </body>
   <script defer src="scripts/emoji_pool.js"></script>

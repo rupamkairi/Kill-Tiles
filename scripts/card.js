@@ -1,28 +1,6 @@
-var card = document.querySelector(".card");
-var card_content = document.querySelector(".card-content");
-
-var c = document.getElementById("c");
-var cc = document.getElementById("cc");
-
-let flip = false;
-
-// card.addEventListener("click", () => {
-//   if (!flip) {
-//     card_content.style.transform = "rotateY(180deg)";
-//   } else {
-//     card_content.style.transform = "rotateY(0deg)";
-//   }
-//   flip = !flip;
-// });
-
-// c.addEventListener("click", () => {
-//   if (!flip) {
-//     cc.style.transform = "rotateY(180deg)";
-//   } else {
-//     cc.style.transform = "rotateY(0deg)";
-//   }
-//   flip = !flip;
-// });
+var selectedCards = [];
+let scoreText = document.getElementById("score-text");
+var matchedCards = 0;
 
 class Card {
   constructor(unicode, id) {
@@ -35,10 +13,10 @@ class Card {
 			<div class="card" id="${this.card_id}">
    			<div class="flip" id="${this.flip_id}">
     		  <div class="card-front">
-	  		    <h1>🎆</h1>
+	  		    <p disabled>💫</p>
 	  		  </div>
 	  		  <div class="card-back">
-	  		    <h1>${this.emoji}</h1>
+	  		    <p>${this.emoji}</p>
 	  		  </div>
 	  		</div>
 			</div>`;
@@ -51,10 +29,36 @@ class Card {
       if (!this.fliped) {
         document.getElementById(this.flip_id).style.transform =
           "rotateY(180deg)";
-      } else {
-        document.getElementById(this.flip_id).style.transform = "rotateY(0deg)";
+
+        selectedCards.push(this);
+
+        if (selectedCards.length == 2) {
+          // do checks
+          if (selectedCards[0].emoji == selectedCards[1].emoji) {
+            // matched
+            console.log("matched");
+            console.log(selectedCards);
+            selectedCards[0].matched = selectedCards[1].matched = true;
+            matchedCards++;
+            console.log(`score: ${matchedCards} ... keep goin...`);
+          } else {
+            // does not matched
+            selectedCards[0].fliped = selectedCards[1].fliped = false;
+            document.getElementById(selectedCards[0].flip_id).style.transform =
+              "rotateY(0deg)";
+            document.getElementById(selectedCards[1].flip_id).style.transform =
+              "rotateY(0deg)";
+            console.log("do not matched");
+          }
+          selectedCards.length = 0;
+        }
+        scoreText.innerText = matchedCards;
+        scoreText.innerHTML = matchedCards;
       }
-      this.fliped = !this.fliped;
+      // else {
+      //   document.getElementById(this.flip_id).style.transform = "rotateY(0deg)";
+      // }
+      // this.fliped = !this.fliped;
     });
   }
 }
